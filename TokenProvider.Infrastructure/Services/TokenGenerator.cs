@@ -66,13 +66,16 @@ public class TokenGenerator(IRefreshTokenService refreshTokenService) : ITokenGe
                         Error = "Error saving token"
                     };
                 }
-
-                return new RefreshTokenResult
+                else
                 {
-                    StatusCode = (int)HttpStatusCode.OK,
-                    Token = token,
-                    CookieOptions = cookieOptions
-                };
+                    return new RefreshTokenResult
+                    {
+                        StatusCode = (int)HttpStatusCode.OK,
+                        Token = token,
+                        CookieOptions = cookieOptions
+                    };
+                }
+             
             }
 
         }
